@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiespace.mapper.CityDubboMapper">
+
+    <insert id="insertOrder" parameterType="com.jiespace.domain.TestOrder">
+
+        insert into `order` (orderNo, createtime, orderstatus, orderprice)
+        values (#{orderNo}, #{createtime}, #{orderstatus}, #{orderprice})
+    </insert>
+
+    <insert id="insertTripShop" parameterType="com.jiespace.domain.TripShop">
+
+        insert into yk_product_trip_shops (day_id,shop_name,shop_product,shop_explian,stay_time)
+        values (#{day_id},#{shop_name},#{shop_product},#{shop_explian},#{stay_time})
+    </insert>
+</mapper>
