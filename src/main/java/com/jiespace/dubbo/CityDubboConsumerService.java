@@ -1,6 +1,7 @@
 package com.jiespace.dubbo;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.codingapi.tx.annotation.TxTransaction;
 import com.jiespace.domain.City;
 import com.jiespace.domain.TestOrder;
 import com.jiespace.domain.TripShop;
@@ -32,7 +33,7 @@ public class CityDubboConsumerService {
         return helloService.findCityByName(cityName);
     }
 
-//    @TxTransaction(isStart = true)
+    @TxTransaction(isStart = true)
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     public City printCityDubbo(String cityName) {
         City city = cityDubboService.findCityByName(cityName);
@@ -44,7 +45,7 @@ public class CityDubboConsumerService {
         tripShop.setShop_product("chanpinmingcheng");
         tripShop.setStay_time("15hour");
         int flag1 = cityDubboMapper.insertTripShop(tripShop);
-//        int a = 100/0;
+        int a = 100/0;
         TestOrder order = new TestOrder();
         order.setOrderNo(String.valueOf(System.currentTimeMillis()) + cityName + "consumer");
         order.setCreatetime(new Date());
