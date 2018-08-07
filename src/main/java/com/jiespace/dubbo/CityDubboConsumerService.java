@@ -44,14 +44,14 @@ public class CityDubboConsumerService {
         tripShop.setShop_name("beijingfendian");
         tripShop.setShop_product("chanpinmingcheng");
         tripShop.setStay_time("15hour");
-        int flag1 = cityDubboMapper.insertTripShop(tripShop);
+        cityDubboMapper.insertTripShop(tripShop);
         int a = 100/0;
         TestOrder order = new TestOrder();
         order.setOrderNo(String.valueOf(System.currentTimeMillis()) + cityName + "consumer");
         order.setCreatetime(new Date());
         order.setOrderstatus(1);
         order.setOrderprice(100);
-        int flag = cityDubboMapper.insertOrder(order);
+        cityDubboMapper.insertOrder(order);
         return city;
     }
 }

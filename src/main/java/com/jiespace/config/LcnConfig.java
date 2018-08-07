@@ -1,8 +1,8 @@
 package com.jiespace.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.codingapi.tx.config.service.TxManagerTxUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,12 +28,9 @@ public class LcnConfig implements TxManagerTxUrlService {
      * @return
      */
     @Bean
+    @ConfigurationProperties(prefix = "spring.datasource", ignoreUnknownFields = false)
     public DataSource dataSource() {
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl(env.getProperty("spring.datasource.url"));
-        dataSource.setUsername(env.getProperty("spring.datasource.username"));
-        dataSource.setPassword(env.getProperty("spring.datasource.password"));
-        return dataSource;
+        return new com.alibaba.druid.pool.DruidDataSource();
     }
 
     /**
